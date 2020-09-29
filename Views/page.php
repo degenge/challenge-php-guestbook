@@ -45,12 +45,6 @@
 
         </div >
 
-        <div class="flex flex-wrap -mx-3 mt-4 mb-2" >
-
-            Test
-
-        </div >
-
     </main >
 
     <?php require 'footer.php'; ?>

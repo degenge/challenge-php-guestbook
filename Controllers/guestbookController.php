@@ -50,22 +50,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //echo 'Message: ' . $message . '<br />';
 
         $currentDate = new DateTime("now", new DateTimeZone('Europe/Brussels'));
-        //echo $currentDate->format('d-m-Y H:i');
 
-        // TODO: save post to file
         $guestbook = new Guestbook($nameFirst . ' ' . $nameLast, $title, $message, $currentDate->format('d-m-Y H:i'));
         $guestbook->savePost();
-        // $guestbook->loadPosts();
 
         // RESET FORM FIELDS
         $nameFirst = $nameLast = $title = $message = "";
     }
 
 }
-
-
-
-
 
 function sanitizeData($data)
 {

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 class Guestbook
 {
+    const MAX_POSTS = 20;
+
     private string $author;
     private string $title;
     private string $content;
@@ -32,12 +34,12 @@ class Guestbook
         foreach ($test as $guestbookItem) {
 //            $temp = unserialize($guestbookItem, [__CLASS__]);
 //            print_r($temp);
-            if(is_object(unserialize($guestbookItem, [__CLASS__]))) {
+            if (is_object(unserialize($guestbookItem, [__CLASS__]))) {
                 $guestbookItems[] = unserialize($guestbookItem, [__CLASS__]);
             }
 
         }
-        return $guestbookItems;
+        return array_slice(array_reverse($guestbookItems), 0, self::MAX_POSTS -1);
     }
 
     /**

@@ -1,12 +1,6 @@
 <?php
 
 $test = Guestbook::getPosts();
-//foreach ($test as $item){
-//    //var_dump($item);
-//    echo $item->getTitle();
-//    echo '<br /><br />';
-//}
-
 
 foreach ($test as $item) {
 ?>
