@@ -1,4 +1,14 @@
 <?php
+
+$test = Guestbook::getPosts();
+//foreach ($test as $item){
+//    //var_dump($item);
+//    echo $item->getTitle();
+//    echo '<br /><br />';
+//}
+
+
+foreach ($test as $item) {
 ?>
 
 <div class="rounded shadow-lg" >
@@ -6,24 +16,28 @@
     <div class="px-6 pt-4 pb-2" >
 
         <div class="font-bold text-xl mb-2 text-green-500" >
-            The Coldest Sunset
+            <?php echo $item->getTitle(); ?>
         </div >
 
         <p class="text-gray-700 text-base" >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+            <?php echo $item->getContent(); ?>
         </p >
 
         <div class="flex flex-wrap -mx-3 mt-4 mb-2" >
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 text-left" >
 
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">John Doe</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    <?php echo $item->getAuthor(); ?>
+                </span>
 
             </div >
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 text-right" >
 
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">29-09-2020 13:30</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    <?php echo $item->getPostDate(); ?>
+                </span>
 
             </div >
 
@@ -34,4 +48,5 @@
 </div >
 
 <?php
+}
 ?>

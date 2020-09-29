@@ -26,9 +26,16 @@ class Guestbook
 
     public static function getPosts(): array
     {
+        $test = Poster::get();
+//        var_dump($test);
         $guestbookItems = [];
-        foreach (Poster::get() as $guestbookItem) {
-            $guestbookItems[] = unserialize($guestbookItem, [self::class]);
+        foreach ($test as $guestbookItem) {
+//            $temp = unserialize($guestbookItem, [__CLASS__]);
+//            print_r($temp);
+            if(is_object(unserialize($guestbookItem, [__CLASS__]))) {
+                $guestbookItems[] = unserialize($guestbookItem, [__CLASS__]);
+            }
+
         }
         return $guestbookItems;
     }

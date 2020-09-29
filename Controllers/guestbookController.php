@@ -65,12 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-$test = Guestbook::getPosts();
-foreach ($test as $item){
-    var_dump($item);
 
-    echo '<br /><br />';
-}
 
 function sanitizeData($data)
 {
