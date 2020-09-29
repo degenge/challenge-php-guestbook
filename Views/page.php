@@ -45,7 +45,9 @@
 
         <div class="flex flex-wrap -mx-3 mt-4 mb-2" >
 
-            Form
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="" >
+                <?php require 'form_guestbook.php'; ?>
+            </form >
 
         </div >
 
