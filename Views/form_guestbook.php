@@ -29,9 +29,7 @@
     <div class="w-full px-3" >
         <label for="message" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" > Message </label >
         <textarea id="message" name="message" rows="4" cols="50"
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white <?php echo (empty($messageError)) ? 'border-gray-200 focus:border-gray-500' : 'border-red-500'; ?>" >
-            <?php echo $message; ?>
-        </textarea >
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white <?php echo (empty($messageError)) ? 'border-gray-200 focus:border-gray-500' : 'border-red-500'; ?>" ><?php echo $message; ?></textarea >
         <?php echo $messageError; ?>
     </div >
 </div >

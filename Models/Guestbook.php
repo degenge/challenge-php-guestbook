@@ -16,30 +16,29 @@ class Guestbook
      * @param string $author
      * @param string $title
      * @param string $content
-     * @param string $postdate
+     * @throws Exception
      */
-    public function __construct(string $author, string $title, string $content, string $postdate)
+    public function __construct(string $author, string $title, string $content)
     {
+        $currentDate = new DateTime("now", new DateTimeZone('Europe/Brussels'));
+
         $this->author   = $author;
         $this->title    = $title;
         $this->content  = $content;
-        $this->postdate = $postdate;
+        $this->postdate = $currentDate->format('d-m-Y H:i');
     }
 
     public static function getPosts(): array
     {
-        $test = Poster::get();
-//        var_dump($test);
         $guestbookItems = [];
-        foreach ($test as $guestbookItem) {
-//            $temp = unserialize($guestbookItem, [__CLASS__]);
-//            print_r($temp);
+
+        foreach (Poster::get() as $guestbookItem) {
             if (is_object(unserialize($guestbookItem, [__CLASS__]))) {
                 $guestbookItems[] = unserialize($guestbookItem, [__CLASS__]);
             }
-
         }
-        return array_slice(array_reverse($guestbookItems), 0, self::MAX_POSTS -1);
+
+        return array_slice(array_reverse($guestbookItems), 0, self::MAX_POSTS - 1);
     }
 
     /**
@@ -74,7 +73,7 @@ class Guestbook
         return $this->postdate;
     }
 
-    public function savePost()
+    public function savePost(): void
     {
         Poster::save($this);
     }

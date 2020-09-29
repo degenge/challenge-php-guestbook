@@ -13,7 +13,6 @@ $isFormValid       = true;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //var_dump($_POST);
 
     if (!empty($_POST['name-first'])) {
         $nameFirst = sanitizeData($_POST['name-first']);
@@ -49,9 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //echo 'Title: ' . $title . '<br />';
         //echo 'Message: ' . $message . '<br />';
 
-        $currentDate = new DateTime("now", new DateTimeZone('Europe/Brussels'));
-
-        $guestbook = new Guestbook($nameFirst . ' ' . $nameLast, $title, $message, $currentDate->format('d-m-Y H:i'));
+        $guestbook = new Guestbook($nameFirst . ' ' . $nameLast, $title, $message);
         $guestbook->savePost();
 
         // RESET FORM FIELDS

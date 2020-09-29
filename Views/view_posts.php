@@ -1,37 +1,39 @@
 <?php
 
-$test = Guestbook::getPosts();
+$guestbookItems = Guestbook::getPosts();
 
-foreach ($test as $item) {
-?>
+foreach ($guestbookItems as $guestbookItem) {
+    ?>
 
-<div class="rounded shadow-lg" >
+    <div class="rounded shadow-lg" >
 
-    <div class="px-6 pt-4 pb-2" >
+        <div class="px-6 pt-4 pb-2" >
 
-        <div class="font-bold text-xl mb-2 text-green-500" >
-            <?php echo $item->getTitle(); ?>
-        </div >
-
-        <p class="text-gray-700 text-base" >
-            <?php echo $item->getContent(); ?>
-        </p >
-
-        <div class="flex flex-wrap -mx-3 mt-4 mb-2" >
-
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 text-left" >
-
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                    <?php echo $item->getAuthor(); ?>
-                </span>
-
+            <div class="font-bold text-xl mb-2 text-green-500" >
+                <?php echo $guestbookItem->getTitle(); ?>
             </div >
 
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 text-right" >
+            <p class="text-gray-700 text-base" >
+                <?php echo $guestbookItem->getContent(); ?>
+            </p >
 
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                    <?php echo $item->getPostDate(); ?>
-                </span>
+            <div class="flex flex-wrap -mx-3 mt-4 mb-2" >
+
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 text-left" >
+
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" >
+                    <?php echo $guestbookItem->getAuthor(); ?>
+                </span >
+
+                </div >
+
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 text-right" >
+
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" >
+                    <?php echo $guestbookItem->getPostDate(); ?>
+                </span >
+
+                </div >
 
             </div >
 
@@ -39,8 +41,6 @@ foreach ($test as $item) {
 
     </div >
 
-</div >
-
-<?php
+    <?php
 }
 ?>
