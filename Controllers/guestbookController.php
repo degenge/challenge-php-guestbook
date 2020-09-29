@@ -65,24 +65,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-echo "GETPOSTS" .'<br /><br/>';
-var_dump(Guestbook::getPosts());
+$test = Guestbook::getPosts();
+foreach ($test as $item){
+    var_dump($item);
 
-echo "GETPOSTS" .'<br /><br/>';
-
-var_dump(unserialize(Guestbook::getPosts(), ['allowed_classes' => false]));
-
-//$test = Guestbook::getPosts();
-//foreach ($test as $item){
-//    var_dump(unserialize($item, [Guestbook::class]));
-//}
-
-
-//$test = Guestbook::getPosts();
-//var_dump($test);
-//foreach ($test as $item) {
-//    print_r($item);
-//}
+    echo '<br /><br />';
+}
 
 function sanitizeData($data)
 {

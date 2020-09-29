@@ -12,9 +12,9 @@ class Poster
     public static function save(Guestbook $guestbookItem): void
     {
         try {
-            $objData = serialize($guestbookItem);
-            $file    = getcwd() . FILE_PATH;
-            file_put_contents($file, $objData, FILE_APPEND);
+            $data = serialize($guestbookItem) . PHP_EOL;
+            $file = getcwd() . FILE_PATH;
+            file_put_contents($file, $data, FILE_APPEND);
 
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -23,16 +23,14 @@ class Poster
 
     public static function get()
     {
-        $objData = [];
+        $data = [];
         try {
-            $file    = getcwd() . FILE_PATH;
-            $objData = file_get_contents($file);
-            $test = unserialize(file_get_contents($file), [Guestbook::class]);
-//
+            $file = getcwd() . FILE_PATH;
+            $data = explode("\n", file_get_contents($file));
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
         }
 
-        return $objData;
+        return $data;
     }
 }

@@ -24,13 +24,50 @@ class Guestbook
         $this->postdate = $postdate;
     }
 
-    public function savePost() {
-        Poster::save($this);
+    public static function getPosts(): array
+    {
+        $guestbookItems = [];
+        foreach (Poster::get() as $guestbookItem) {
+            $guestbookItems[] = unserialize($guestbookItem, [self::class]);
+        }
+        return $guestbookItems;
     }
 
-    public static function getPosts()
+    /**
+     * @return string
+     */
+    public function getAuthor(): string
     {
-        return Poster::get();
+        return $this->author;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostdate(): string
+    {
+        return $this->postdate;
+    }
+
+    public function savePost()
+    {
+        Poster::save($this);
     }
 
 }
