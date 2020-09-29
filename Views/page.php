@@ -37,7 +37,9 @@
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0" >
 
-                Right
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="" >
+                    <?php require 'form_guestbook.php'; ?>
+                </form >
 
             </div >
 
@@ -45,9 +47,7 @@
 
         <div class="flex flex-wrap -mx-3 mt-4 mb-2" >
 
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="" >
-                <?php require 'form_guestbook.php'; ?>
-            </form >
+            Test
 
         </div >
 

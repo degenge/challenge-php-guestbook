@@ -44,16 +44,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($isFormValid) {
-        echo 'Name first: ' . $nameFirst . '<br />';
-        echo 'Name last: ' . $nameLast . '<br />';
-        echo 'Title: ' . $title . '<br />';
-        echo 'Message: ' . $message . '<br />';
+        //echo 'Name first: ' . $nameFirst . '<br />';
+        //echo 'Name last: ' . $nameLast . '<br />';
+        //echo 'Title: ' . $title . '<br />';
+        //echo 'Message: ' . $message . '<br />';
 
         $currentDate = new DateTime("now", new DateTimeZone('Europe/Brussels'));
-        echo $currentDate->format('d-m-Y H:i');
+        //echo $currentDate->format('d-m-Y H:i');
 
         // TODO: save post to file
-        // $guestbook->savePost();
+        $guestbook = new Guestbook($nameFirst . ' ' . $nameLast, $title, $message, $currentDate->format('d-m-Y H:i'));
+        $guestbook->savePost();
         // $guestbook->loadPosts();
 
         // RESET FORM FIELDS
@@ -61,6 +62,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 }
+
+
+
+echo "GETPOSTS" .'<br /><br/>';
+var_dump(Guestbook::getPosts());
+
+echo "GETPOSTS" .'<br /><br/>';
+
+var_dump(unserialize(Guestbook::getPosts(), ['allowed_classes' => false]));
+
+//$test = Guestbook::getPosts();
+//foreach ($test as $item){
+//    var_dump(unserialize($item, [Guestbook::class]));
+//}
+
+
+//$test = Guestbook::getPosts();
+//var_dump($test);
+//foreach ($test as $item) {
+//    print_r($item);
+//}
 
 function sanitizeData($data)
 {

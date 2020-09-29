@@ -24,5 +24,13 @@ class Guestbook
         $this->postdate = $postdate;
     }
 
+    public function savePost() {
+        Poster::save($this);
+    }
+
+    public static function getPosts()
+    {
+        return Poster::get();
+    }
 
 }
